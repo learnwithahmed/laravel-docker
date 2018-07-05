@@ -1,4 +1,4 @@
-# Docker development environment for developing PHP applications 🐳
+# Docker development environment PHP/Laravel 🐳
 
 > بيئة تطويرية كاملة لبناء مشاريع بي اج بي بستخدام دوكر
 
@@ -10,7 +10,7 @@ Included Features:
 - PHPMyAdmin
 - Composer
 
-## Overview
+## Important Instructions | تعليمات مهمة 💁‍♂️
 
 Firs thing you need to do is to Make sure you have all these before you install this project
 
@@ -37,7 +37,7 @@ Then check if you install them correctly running the following commands :
   docker-compose -v # للتاكد من نسخة دوكر كمبوس
   ```
 
-## Clone the project | تحميل المشروع
+## Clone the project | تحميل المشروع ⛷
 
 Download the project by the following command :
 
@@ -57,7 +57,7 @@ Go to the project directory :
   cd laravel-docker
 ```
 
-## Run the application | تشغيل المشروع
+## Run the application | تشغيل المشروع 🚀
 
 To start the application run the following commands :
 
@@ -121,7 +121,7 @@ To start the application run the following commands :
       
 
 
-## Docker Command Tips
+## Docker Command Tips 💡🐳
 
 - To view all your containers stats with Container Names instead of IDs
 
