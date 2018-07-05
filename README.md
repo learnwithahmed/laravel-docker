@@ -65,7 +65,7 @@ To start the application run the following commands :
 
 1.  ```sh
     docker-compose up -d
-    # لسحب كل الصورة للبرامج المطلوبة, مرات تاخذ وقت يجب الانتظار
+    # (لسحب كل الصورة للبرامج المطلوبة, ,قد تستغرق بعض الوقت (ساعة او اكثر
     # 🐢 You need to be patient, this might take a several minutes 🐢
     ```
 
@@ -133,7 +133,7 @@ To start the application run the following commands :
 
 - To acces MySQL shell using CLI inside your container
 
-  > sql للدخول لحاوية مايسكول وتنفيذ اوامر
+  > sql للدخول لحاوية مايسكول وتنفيذ اوامر 
 
   ```sh
   docker exec -it mysql bash
@@ -160,5 +160,5 @@ To start the application run the following commands :
   ```sh
   docker-compose down -v
   # لإيقاف وازالة كل حاويات.
-  # ملاحظة: بعد تنفيذ هذا الامر تحتاج للانترنيت لتحميل الصور المطلوبة
+  # ملاحظة: بعد تنفيذ هذا الامر تحتاج للانترنيت لتحميل الملفات المطلوبة
   ```
