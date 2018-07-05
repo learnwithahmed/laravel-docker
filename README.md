@@ -111,10 +111,15 @@ To start the application run the following commands :
     ```
 
 6.  The application has been baked, it's dinner time 🍔 you can open the following in your browser:
+    > تم اكمال الاعدادات، يمكنك تصفح الموقع وقاعدة البيانات من الروابط التالية
 
     - Laravel: [http://localhost:8000](http://localhost:8000/)
     - PHPMyAdmin: [http://localhost:8080](http://localhost:8080/)  
-      use `username: root`, `password: root`. If you want to change the username and password you can do it from `.env` file by changing `MYSQL_ROOT_USER=root` and `MYSQL_ROOT_PASSWORD=root`
+      > To login PHPMyAdmin use `username: root`, `password: root`. If you want to change the username and password you can do it from `.env` file by changing `MYSQL_ROOT_USER=root` and `MYSQL_ROOT_PASSWORD=root`
+      
+      > لاسم المستخدم والباسورد وايضا تستطيع تغيرها بداخل الملف .env بستخدام متغيرات المعرفة داخل ملف  phpmyadmin للدخول صفحة 
+      
+
 
 ## Docker Command Tips
 
