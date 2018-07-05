@@ -44,7 +44,9 @@ Download the project by the following command :
 > حمل المشروع
 
 ```sh
-  git clone PROJECT
+  git clone git@github.com:code2gether/laravel-docker.git
+  or
+  git clone https://github.com/code2gether/laravel-docker.git
 ```
 
 Go to the project directory :
