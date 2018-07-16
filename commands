@@ -9,10 +9,16 @@ if [ $# -gt 0 ]; then
         docker-compose up -d
 
     elif [ "$1" == "stop" ]; then
-        docker-compose down
+        docker-compose stop
+    
+    elif [ "$1" == "remove" ]; then
+        docker-compose down -v
 
-    elif [ "$1" == "loh" ]; then
+    elif [ "$1" == "logs" ]; then
        docker-compose logs -f -t
+
+    elif [ "$1" == "stats" ]; then
+       docker stats $(docker inspect -f '{{.Name}}' $(docker ps -q) | cut -c 2-)
 
     elif [ "$1" == "artisan" ] || [ "$1" == "art" ]; then
         shift 1
