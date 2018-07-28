@@ -111,10 +111,13 @@ To start the application run the following commands :
 
 Inside `commands` shell file, you can fine many useful commands to speedup your workflow. Lets see how to use them:
 
+> داخل ملف الاومر يوجد من الاومر الجاهزة ومختصره لتسريع عملك اثناء التطوير
+
 - To startup containers
 
   ```sh
   ./commands start
+  # لتشغيل كل الحاويات المطلوبة
   ```
 
 - To stop all containers but don't remove them
@@ -140,14 +143,19 @@ Inside `commands` shell file, you can fine many useful commands to speedup your 
 
 - To require any package to your Laravel project using composer
 
+  > لتنزيل اي مكتبة لمشروع لارافل
+
   ```sh
   ./commands composer require nesbot/carbon
 
   # Shortcut
   ./commands comp require nesbot/carbon
+  # مختصر لامر السابق
   ```
 
 - To use `artisan` command for doing anything
+
+  > لتنفيذ اوامر لارافل
 
   ```sh
   ./commands artisan make:auth
@@ -156,6 +164,7 @@ Inside `commands` shell file, you can fine many useful commands to speedup your 
 
   # Shortcut
   ./commands art make:auth
+  #  مختصر لامر السابق
   ```
 
 - To monitor containers health in formatted way using containers name
@@ -167,7 +176,7 @@ Inside `commands` shell file, you can fine many useful commands to speedup your 
   ```
 
 - When you working with Frontend development, you can use following commands:
-
+  > npm او yarn تحتاج اما Frontend في حالة العمل مع مكتبات
   ```sh
   ./commands yarn
   # OR
