@@ -123,7 +123,7 @@ To start the application run the following commands :
     > تم اكمال الاعدادات، يمكنك تصفح الموقع وقاعدة البيانات من الروابط التالية
 
     - Laravel Applicaion: [http://localhost:8080](http://localhost:8080)
-    - PHPMyAdmin: [http://localhost:8080](http://localhost:8081/)
+    - PHPMyAdmin: [http://localhost:8081](http://localhost:8081/)
 
     > To access PHPMyAdmin you need username and password, you can use `MYSQL_USER`, `MYSQL_PASSWORD` from `.docker.env` file.
 
