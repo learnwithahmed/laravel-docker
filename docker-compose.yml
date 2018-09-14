@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   #NGNIX & PHP IMAGE
   app:
@@ -7,20 +7,20 @@ services:
       dockerfile: Dockerfile
     image: laravel-docker/app:latest
     networks:
-     - appnet
+      - appnet
     volumes:
-     - ./web:/var/www/html
+      - ./web:/var/www/html
     ports:
-     - ${APP_PORT}:80
+      - ${APP_PORT}:80
     working_dir: /var/www/html
 
   #REDIS IMAGE
   cache:
     image: redis:alpine
     networks:
-     - appnet
+      - appnet
     volumes:
-     - cachedata:/data
+      - cachedata:/data
 
   # MYSQL IMAGE
   db:
@@ -31,11 +31,11 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-     - ${DB_PORT}:3306
+      - ${DB_PORT}:3306
     networks:
-     - appnet
+      - appnet
     volumes:
-     - dbdata:/var/lib/mysql
+      - dbdata:/var/lib/mysql
 
   # Nodejs IMAGE
   node:
@@ -44,11 +44,11 @@ services:
       dockerfile: Dockerfile
     image: laravel-docker/node:latest
     networks:
-     - appnet
+      - appnet
     volumes:
-     - ./web:/opt
+      - ./web:/opt
     working_dir: /opt
-    command: echo hi
+    command: Hello, Node js here ;)
 
   # PHPMyAdmin Image
   myadmin:

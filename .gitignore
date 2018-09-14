@@ -1,9 +1,6 @@
 # Global
 .*.swp
 .DS_Store
-
-# Web
-web/*
 data/
 
 # SSL Certs
