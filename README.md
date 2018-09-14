@@ -80,15 +80,36 @@ To start the application run the following commands :
     # يقوم بعرض الوقت والتاريخ بشكل مفهوم -t يقوم بتتبع النتائج بالوقت الحقيقي و  -f بينما
     ```
 
-3.  Install fresh new Laravel app and copy it into `web/` directory
+3.  Install fresh copy of laravel and name it `web`
 
-    > تنزيل نسخة من مشروع لارافل ونسخها بداخل ملف الويب
+    > تنزيل نسخة من مشروع لارافل تحت اسم ويب
+
+    ```sh
+      ./commands composer create-project --prefer-dist laravel/laravel web
+      # ./command: ملف يحتوي على اوامر مختصره لكل حاوية
+    ```
 
 4.  Copy `.env.example => .env` inside `web` where you laravel files
 
-    > نسخ ملف المذكور في الاعلى
+    > المذكور فوقenv نسخ ملف
 
-5.  You need to generate new laravel key, this can be done inside the container using:
+5.  Update DB config inside laravel `.env` file with this
+
+    > حدث اعدادات قاعدة بيانات مشروعك
+
+    ```sh
+     DB_HOST     = db
+     DB_PORT     = 3309
+     DB_DATABASE = homestead
+     DB_USERNAME = homestead
+     DB_PASSWORD = secret
+    ```
+
+    > Note: you can change all db config in `.docker.env` as well.
+
+    > `.docker.env` تستطيع تغير اعدادت قاعدة البيانات من داخل ملف
+
+6.  You need to generate new laravel key, this can be done inside the container using:
 
     > في حالة اذ تحتاج لتوليد مفتاح جديد لمشروعك نفذالامر التالي
 
@@ -97,21 +118,24 @@ To start the application run the following commands :
       # ./command: ملف يحتوي على اوامر مختصره لكل حاوية
     ```
 
-6.  The application has been baked, it's dinner time 🍔 you can open the following in your browser:
+7.  The application has been baked, its dinner time 🍔 you can open the following in your browser:
 
     > تم اكمال الاعدادات، يمكنك تصفح الموقع وقاعدة البيانات من الروابط التالية
 
     - Laravel Applicaion: [http://localhost:8080](http://localhost:8080)
     - PHPMyAdmin: [http://localhost:8080](http://localhost:8080/)
 
-      > To login PHPMyAdmin use `MYSQL_USER`, `MYSQL_PASSWORD` inside `.env` file. If you want to change the username and password you can do it from `.env` file.
-      > `.env.` الموجودة داخل ملف MYSQL تحتاج لاسم مستخدم وكلمة مرور, تستطيع استخدام نفس كلمة مرور PHPMyAdmin للدخول صفحة
+    > To access PHPMyAdmin you need username and password, you can use `MYSQL_USER`, `MYSQL_PASSWORD` from `.docker.env` file.
 
-## Commands Tips 💡🐳
+    > Note: If you want to update/change the username and password inside `.docker.env`, don't forget to run `./commands rebuild`
+
+    > `.docker.env` تحتاج لاسم المستخدم وكلمة المرور الموجوده داخل ملف PHPMyAdmin للدخول صفحة
+
+## Useful Commands 💡🐳
 
 Inside `commands` shell file, you can fine many useful commands to speedup your workflow. Lets see how to use them:
 
-> داخل ملف الاومر يوجد من الاومر الجاهزة ومختصره لتسريع عملك اثناء التطوير
+> داخل ملف الاومر يوجداوامر جاهزة ومختصره تخص دوكر لتسريع عملك اثناء التطوير
 
 - To startup containers
 
@@ -176,7 +200,7 @@ Inside `commands` shell file, you can fine many useful commands to speedup your 
   ```
 
 - When you working with Frontend development, you can use following commands:
-  > npm او yarn تحتاج اما Frontend في حالة العمل مع مكتبات
+  > npm او yarn تحتاج اما Frontend في حالة تنزيل مكتبات
   ```sh
   ./commands yarn
   # OR
@@ -184,5 +208,5 @@ Inside `commands` shell file, you can fine many useful commands to speedup your 
   # OR
   ./commands npm install
   # OR
-  ./commands npm install --save-dev prettier
+  ./commands npm install --save react
   ```
