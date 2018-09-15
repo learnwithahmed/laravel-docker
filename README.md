@@ -91,7 +91,7 @@ To start the application run the following commands :
 
 4.  Copy `.env.example => .env` inside `web` where you laravel files
 
-    > المذكور فوقenv نسخ ملف
+    > المذكور فوق env نسخ ملف
 
 5.  Update DB config inside laravel `.env` file with this
 
@@ -105,9 +105,9 @@ To start the application run the following commands :
      DB_PASSWORD = secret
     ```
 
-    > Note: you can change all db config in `.docker.env` as well.
+    > Note: you can change all db config in docker `.env` file as well.
 
-    > `.docker.env` تستطيع تغير اعدادت قاعدة البيانات من داخل ملف
+    > للدوكر `.env` تستطيع تغير اعدادت قاعدة البيانات من داخل ملف
 
 6.  You need to generate new laravel key, this can be done inside the container using:
 
@@ -125,11 +125,11 @@ To start the application run the following commands :
     - Laravel Applicaion: [http://localhost:8080](http://localhost:8080)
     - PHPMyAdmin: [http://localhost:8081](http://localhost:8081/)
 
-    > To access PHPMyAdmin you need username and password, you can use `MYSQL_USER`, `MYSQL_PASSWORD` from `.docker.env` file.
+    > To access PHPMyAdmin you need username and password, you can use `MYSQL_USER`, `MYSQL_PASSWORD` from docker `.env` file.
 
-    > Note: If you want to update/change the username and password inside `.docker.env`, don't forget to run `./commands rebuild`
+    > Note: If you want to update/change the username and password inside docker `.env` file, don't forget to run `./commands rebuild`
 
-    > `.docker.env` تحتاج لاسم المستخدم وكلمة المرور الموجوده داخل ملف PHPMyAdmin للدخول صفحة
+    > للدوكر `.env` تحتاج لاسم المستخدم وكلمة المرور الموجوده داخل ملف PHPMyAdmin للدخول صفحة
 
 ## Useful Commands 💡🐳
 
