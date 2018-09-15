@@ -48,7 +48,7 @@ services:
     volumes:
       - ./web:/opt
     working_dir: /opt
-    command: Hello, Node js here ;)
+    command: echo NodeJS is here
 
   # PHPMyAdmin Image
   myadmin:
