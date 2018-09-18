@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 
 ##
-# Ensure /.composer exists and is writable
-#
-if [ ! -d /.composer ]; then
-    mkdir /.composer
-fi
-
+# Ensure /.composer is writable
+# 
 chmod -R ugo+rw /.composer
 
 ##
