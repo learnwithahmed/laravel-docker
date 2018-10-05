@@ -43,6 +43,11 @@ if [ $# -gt 0 ]; then
         docker-compose run --rm \
             node \
             yarn "$@"
+
+    elif [ "$1" == "exec" ]; then
+        shift 1
+        docker exec -it "$@"
+
     else
         docker-compose "$@"
     fi

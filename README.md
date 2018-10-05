@@ -64,15 +64,19 @@ To start the application run the following commands :
 
 > لبدء تشغيل التطبيق يجب تنفيذ الأوامر التالية
 
-1.  ```sh
+1.  Spin up all docker containers
+
+    > لتهيئة كل الحاويات المطلوبة
+
+    ````sh
     docker-compose up -d
-    # لسحب كل الصورة للبرامج المطلوبة, مرات تاخذ وقت يجب الانتظار
     # 🐢 You need to be patient, this might take a several minutes 🐢
     ```
+    ````
 
 2.  If you want to attach yourself to the logs of all running services by running this command :
 
-    > إذا أردت مشاهدة النتائج تفصيلية عن العمليات والاوامر الجاري تنفيذها بالوقت الحالي
+    > لكل الحاويات logs لمشاهدة
 
     ```sh
     docker-compose logs -f -t
@@ -80,29 +84,39 @@ To start the application run the following commands :
     # يقوم بعرض الوقت والتاريخ بشكل مفهوم -t يقوم بتتبع النتائج بالوقت الحقيقي و  -f بينما
     ```
 
-3.  Install fresh copy of laravel and name it `web`
+3.  Install fresh copy of laravel and move it into `web` directory
 
     > تنزيل نسخة من مشروع لارافل تحت اسم ويب
 
     ```sh
-      ./commands composer create-project --prefer-dist laravel/laravel web
-      # ./command: ملف يحتوي على اوامر مختصره لكل حاوية
+      ./commands composer create-project laravel/laravel laravelapp --no-progress --profile --prefer-dist
     ```
 
-4.  Copy `.env.example => .env` inside `web` where you laravel files
-
-    > المذكور فوق env نسخ ملف
-
-5.  Update DB config inside laravel `.env` file with this
-
-    > حدث اعدادات قاعدة بيانات مشروعك
+    Move it into `web` dir | نقل المشروع لمسار الويب
 
     ```sh
-     DB_HOST     = db
-     DB_PORT     = 3309
-     DB_DATABASE = homestead
-     DB_USERNAME = homestead
-     DB_PASSWORD = secret
+      mv web/laravelapp/.* ./web
+      mv web/laravelapp/* ./web
+    ```
+
+4.  If there is not `.env` file, then copy `.env.example => .env` inside `web` where you laravel files. you can do it through terminal:
+
+    > بستخدام الامر الموجود في الاسفل env نسخ ملف
+
+    ```sh
+      cp .env.example .env
+    ```
+
+5.  Make sure your `env` file inside Laravel project matches the same as `env` file in root directory.
+
+    > حدث اعدادات قاعدة بيانات لمشروعك
+
+    ```sh
+      DB_HOST     = db
+      DB_PORT     = 3309
+      DB_DATABASE = homestead
+      DB_USERNAME = homestead
+      DB_PASSWORD = secret
     ```
 
     > Note: you can change all db config in docker `.env` file as well.
@@ -111,11 +125,11 @@ To start the application run the following commands :
 
 6.  You need to generate new laravel key, this can be done inside the container using:
 
-    > في حالة اذ تحتاج لتوليد مفتاح جديد لمشروعك نفذالامر التالي
+    > في حالة اذ تحتاج لتوليد مفتاح جديد لمشروعك نفذ الامر التالي
 
     ```sh
-      ./commands artisan key:generate
-      # ./command: ملف يحتوي على اوامر مختصره لكل حاوية
+    ./commands artisan key:generate
+    # ./command: ملف يحتوي على اوامر مختصره لكل حاوية
     ```
 
 7.  The application has been baked, its dinner time 🍔 you can open the following in your browser:
@@ -135,7 +149,7 @@ To start the application run the following commands :
 
 Inside `commands` shell file, you can fine many useful commands to speedup your workflow. Lets see how to use them:
 
-> داخل ملف الاومر يوجداوامر جاهزة ومختصره تخص دوكر لتسريع عملك اثناء التطوير
+> داخل ملف الاوامر يوجد مختصرات جاهزة لاوامر تخص دوكر لتسريع عملك
 
 - To startup containers
 
