@@ -84,15 +84,19 @@ To start the application run the following commands :
     # يقوم بعرض الوقت والتاريخ بشكل مفهوم -t يقوم بتتبع النتائج بالوقت الحقيقي و  -f بينما
     ```
 
-3.  Install fresh copy of laravel and move it into `web` directory
+3.  Install fresh copy of laravel
 
-    > تنزيل نسخة من مشروع لارافل تحت اسم ويب
+    > تنزيل نسخة من مشروع لارافل بستخدام احدى الامرين
 
     ```sh
+      # either by this command
       ./commands composer create-project laravel/laravel laravelapp --no-progress --profile --prefer-dist
+
+      # or using Laravel installer
+      laravel new laravelapp
     ```
 
-    Move it into `web` dir | نقل المشروع لمسار الويب
+    Move all laravel files into `web` directory | نقل المشروع او جميع الملفات من داخل مشروع لارافل لمسار الويب
 
     ```sh
       mv web/laravelapp/.* ./web
@@ -107,43 +111,37 @@ To start the application run the following commands :
       cp .env.example .env
     ```
 
-5.  Make sure your `env` file inside Laravel project matches the same as `env` file in root directory.
-
-    > حدث اعدادات قاعدة بيانات لمشروعك
+5.  For `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`, please refer to the docker `.env` file . You can also update the file `env` to update those configurations. Below are the default configurations.
 
     ```sh
-      DB_HOST     = db
-      DB_PORT     = 3309
-      DB_DATABASE = homestead
-      DB_USERNAME = homestead
-      DB_PASSWORD = secret
+    # وايضا تستطيع تحديثها في اي وقت ولكن لاتنسى تنفيذ امر env جميع اعدادات قاعدة البيانات متوفره داخل ملف
+    # docker-compose up --build -d
+
+    DB_PORT=3309 - # you can use this port if you want to connect to DB using SequelPro, TeamSQL, WorkBrench, ...etc.
+    MYSQL_VERSION=5.7
+    MYSQL_ROOT_PASSWORD=secret
+    MYSQL_DATABASE=homestead
+    MYSQL_USER=homestead
+    MYSQL_PASSWORD=secret
     ```
 
-    > Note: you can change all db config in docker `.env` file as well.
-
-    > للدوكر `.env` تستطيع تغير اعدادت قاعدة البيانات من داخل ملف
-
-6.  You need to generate new laravel key, this can be done inside the container using:
+6.  If you need to generate new laravel key, this can be done inside the container using:
 
     > في حالة اذ تحتاج لتوليد مفتاح جديد لمشروعك نفذ الامر التالي
 
     ```sh
-    ./commands artisan key:generate
-    # ./command: ملف يحتوي على اوامر مختصره لكل حاوية
+      docker-compose exec app php artisan key:generate
+      #or
+      ./commands artisan key:generate
+      # ./commands: ملف يحتوي على اوامر مختصره لكل حاوية
     ```
 
-7.  The application has been baked, its dinner time 🍔 you can open the following in your browser:
+7.  The application has been baked, its dinner time 🍔. Now you can open the following in your browser:
 
-    > تم اكمال الاعدادات، يمكنك تصفح الموقع وقاعدة البيانات من الروابط التالية
+    > تم تجهيز البيئة المطلوبة ، يمكنك زيارة الروابط التالية
 
     - Laravel Applicaion: [http://localhost:8080](http://localhost:8080)
     - PHPMyAdmin: [http://localhost:8081](http://localhost:8081/)
-
-    > To access PHPMyAdmin you need username and password, you can use `MYSQL_USER`, `MYSQL_PASSWORD` from docker `.env` file.
-
-    > Note: If you want to update/change the username and password inside docker `.env` file, don't forget to run `./commands rebuild`
-
-    > للدوكر `.env` تحتاج لاسم المستخدم وكلمة المرور الموجوده داخل ملف PHPMyAdmin للدخول صفحة
 
 ## Useful Commands 💡🐳
 
