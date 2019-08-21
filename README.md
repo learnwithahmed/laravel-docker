@@ -62,16 +62,16 @@ To start the application run the following commands :
     cd laravel-docker
     ```
 
-1.  Spin up all docker containers
+2.  Spin up all docker containers
 
-    > لتهيئة كل الحاويات المطلوبة
+    >  لسحب كل الصورة للبرامج المطلوبة, ,قد تستغرق بعض الوقت
 
     ```sh
     docker-compose up -d
     # You need to be patient, this might take a several minutes 🐢
     ```
 
-2.  If you want to attach yourself to the logs of all running services by running this command :
+3.  If you want to attach yourself to the logs of all running services by running this command :
 
     > لكل الحاويات logs لمشاهدة
 
@@ -81,7 +81,7 @@ To start the application run the following commands :
     # يقوم بعرض الوقت والتاريخ بشكل مفهوم -t يقوم بتتبع النتائج بالوقت الحقيقي و  -f بينما
     ```
 
-3.  Install fresh copy of laravel
+4.  Install fresh copy of laravel
 
     > تنزيل نسخة من مشروع لارافل بستخدام احدى الامرين
 
@@ -93,14 +93,14 @@ To start the application run the following commands :
       laravel new project
     ```
 
-4.  If there is no `.env` file insde `project` directory, then make a new copy using:
+5.  If there is no `.env` file insde `project` directory, then make a new copy using:
     > تحتاج لعمل نسخة للملف env في حال اذا كال المشروع لايحتوي على ملف
 
     ```sh
       cp .env.example .env
     ```
 
-5.  Copy `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` from docker's `.env` file . 
+6.  Copy `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` from docker's `.env` file . 
     > للدوكر env انسخ اعدادات قاعدة البيانات من ملف 
     
     ```sh
@@ -119,7 +119,7 @@ To start the application run the following commands :
     docker-compose up --build -d
     ```
 > 
-1.  If you need to generate new laravel key, this can be done inside the container using:
+7.  If you need to generate new laravel key, this can be done inside the container using:
 
     > في حالة اذ تحتاج لتوليد مفتاح جديد لمشروعك نفذ الامر التالي
 
@@ -130,7 +130,7 @@ To start the application run the following commands :
       # ./commands: ملف يحتوي على اوامر مختصره لكل حاوية
     ```
 
-2.  The application has been baked, its dinner time 🍔. Now you can open the following in your browser:
+8.  The application has been baked, its dinner time 🍔. Now you can open the following in your browser:
 
     > تم تجهيز البيئة المطلوبة ، يمكنك زيارة الروابط التالية
 
