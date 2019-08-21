@@ -204,7 +204,7 @@ Inside `commands` shell file, you can fine many useful commands to speedup your 
 
 - When you working with Frontend development, you can use following commands:
   ```sh
-  # npm او yarn بستخدام الفرونت اند لتنزيل مكتبات
+  # npm او yarn لتنزيل مكتبات فرونت اند بستخدام احدى الادوات
   ./commands yarn add react
 
   # OR
