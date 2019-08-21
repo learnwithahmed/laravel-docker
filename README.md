@@ -45,17 +45,8 @@ Download the project by the following command :
 > حمل المشروع
 
 ```sh
+  # Go to the project directory | حمل المشروع 
   git clone git@github.com:code2gether/laravel-docker.git
-  or
-  git clone https://github.com/code2gether/laravel-docker.git
-```
-
-Go to the project directory :
-
-> ادخل لملف المشروع
-
-```sh
-  cd laravel-docker
 ```
 
 ## Run the application | تشغيل المشروع 🚀
@@ -64,15 +55,21 @@ To start the application run the following commands :
 
 > لبدء تشغيل التطبيق يجب تنفيذ الأوامر التالية
 
+1. Change project directory 
+    > ادخل لملف المشروع
+
+    ```sh
+    cd laravel-docker
+    ```
+
 1.  Spin up all docker containers
 
     > لتهيئة كل الحاويات المطلوبة
 
-    ````sh
+    ```sh
     docker-compose up -d
-    # 🐢 You need to be patient, this might take a several minutes 🐢
+    # You need to be patient, this might take a several minutes 🐢
     ```
-    ````
 
 2.  If you want to attach yourself to the logs of all running services by running this command :
 
@@ -90,34 +87,24 @@ To start the application run the following commands :
 
     ```sh
       # either by this command
-      ./commands composer create-project laravel/laravel laravelapp --no-progress --profile --prefer-dist
+      ./commands composer create-project laravel/laravel project --no-progress --profile --prefer-dist
 
       # or using Laravel installer
-      laravel new laravelapp
+      laravel new project
     ```
 
-    Move all laravel files into `web` directory | نقل المشروع او جميع الملفات من داخل مشروع لارافل لمسار الويب
-
-    ```sh
-      mv web/laravelapp/.* ./web
-      mv web/laravelapp/* ./web
-    ```
-
-4.  If there is not `.env` file, then copy `.env.example => .env` inside `web` where you laravel files. you can do it through terminal:
-
-    > بستخدام الامر الموجود في الاسفل env نسخ ملف
+4.  If there is no `.env` file insde `project` directory, then make a new copy using:
+    > تحتاج لعمل نسخة للملف env في حال اذا كال المشروع لايحتوي على ملف
 
     ```sh
       cp .env.example .env
     ```
 
-5.  For `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`, please refer to the docker `.env` file . You can also update the file `env` to update those configurations. Below are the default configurations.
-
+5.  Copy `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` from docker's `.env` file . 
+    > للدوكر env انسخ اعدادات قاعدة البيانات من ملف 
+    
     ```sh
-    # وايضا تستطيع تحديثها في اي وقت ولكن لاتنسى تنفيذ امر env جميع اعدادات قاعدة البيانات متوفره داخل ملف
-    # docker-compose up --build -d
-
-    DB_PORT=3309 - # you can use this port if you want to connect to DB using SequelPro, TeamSQL, WorkBrench, ...etc.
+    DB_PORT=3306
     MYSQL_VERSION=5.7
     MYSQL_ROOT_PASSWORD=secret
     MYSQL_DATABASE=homestead
@@ -125,7 +112,14 @@ To start the application run the following commands :
     MYSQL_PASSWORD=secret
     ```
 
-6.  If you need to generate new laravel key, this can be done inside the container using:
+    ```sh
+    # You can udpate configuration above as well but dont forget to run:
+    # وايضا تستطيع تحديث الاعدادات في اي وقت ولكن لاتنسى تنفيذ امر
+
+    docker-compose up --build -d
+    ```
+> 
+1.  If you need to generate new laravel key, this can be done inside the container using:
 
     > في حالة اذ تحتاج لتوليد مفتاح جديد لمشروعك نفذ الامر التالي
 
@@ -136,7 +130,7 @@ To start the application run the following commands :
       # ./commands: ملف يحتوي على اوامر مختصره لكل حاوية
     ```
 
-7.  The application has been baked, its dinner time 🍔. Now you can open the following in your browser:
+2.  The application has been baked, its dinner time 🍔. Now you can open the following in your browser:
 
     > تم تجهيز البيئة المطلوبة ، يمكنك زيارة الروابط التالية
 
@@ -152,36 +146,38 @@ Inside `commands` shell file, you can fine many useful commands to speedup your 
 - To startup containers
 
   ```sh
-  ./commands start
   # لتشغيل كل الحاويات المطلوبة
+  ./commands start
   ```
 
 - To stop all containers but don't remove them
 
   ```sh
-  ./commands stop
   # لإيقاف كل حاويات دون أن تقوم بإزالتها
+  ./commands stop
   ```
 
 - To stop and remove all stopped docker containers and volumes
 
   ```sh
-  ./commands remove
   # لإيقاف وازالة كل حاويات.
-  # ملاحظة: في حالة  تنفيذ هذا الامر تحتاج للانترنيت لتحميل الصور المطلوبة من جديد
+  ./commands remove
+
+  # ملاحظة: في حالة تنفيذ هذا الامر تحتاج للانترنيت لتحميل الصور المطلوبة من جديد
   ```
 
 - To view logs of all running services
 
   ```sh
+  # لكل الحاويات logs لمشاهدة
   ./commands logs
   ```
 
 - To require any package to your Laravel project using composer
 
-  > لتنزيل اي مكتبة لمشروع لارافل
 
   ```sh
+  # لتنزيل اي مكتبة لمشروع لارافل
   ./commands composer require nesbot/carbon
 
   # Shortcut
@@ -190,35 +186,27 @@ Inside `commands` shell file, you can fine many useful commands to speedup your 
   ```
 
 - To use `artisan` command for doing anything
-
-  > لتنفيذ اوامر لارافل
-
   ```sh
+  # لتنفيذ اوامر لارافل
   ./commands artisan make:auth
   # OR
   ./commands artisan migrate
 
-  # Shortcut
+  # Shortcut | مختصر لامر السابق
   ./commands art make:auth
-  #  مختصر لامر السابق
   ```
 
 - To monitor containers health in formatted way using containers name
-
-  > لمراقبة حالة الحاويات بشكل مباشر
-
   ```sh
+  # لمراقبة حالة الحاويات بشكل مباشر
   ./commands stats
   ```
 
 - When you working with Frontend development, you can use following commands:
-  > npm او yarn تحتاج اما Frontend في حالة تنزيل مكتبات
   ```sh
-  ./commands yarn
-  # OR
-   ./commands yarn add react
-  # OR
-  ./commands npm install
+  # npm او yarn بستخدام الفرونت اند لتنزيل مكتبات
+  ./commands yarn add react
+
   # OR
   ./commands npm install --save react
   ```
