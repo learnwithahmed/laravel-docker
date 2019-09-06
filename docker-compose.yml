@@ -9,7 +9,7 @@ services:
     networks:
       - appnet
     volumes:
-      - ./web:/var/www/html
+      - ./project:/var/www/html
     ports:
       - ${APP_PORT}:80
     working_dir: /var/www/html
@@ -46,7 +46,7 @@ services:
     networks:
       - appnet
     volumes:
-      - ./web:/opt
+      - ./project:/opt
     working_dir: /opt
     command: echo NodeJS is here
 
