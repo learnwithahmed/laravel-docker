@@ -25,6 +25,11 @@ if [ $# -gt 0 ]; then
         docker-compose exec \
             app \
             php artisan "$@"
+    elif [ "$1" == "mysql" ]; then
+        shift 1
+        docker-compose exec \
+            db \
+            bash -c 'MYSQL_PWD=$MYSQL_ROOT_PASSWORD mysql -u root $MYSQL_DATABASE'
 
     elif [ "$1" == "composer" ] || [ "$1" == "comp" ]; then
         shift 1
