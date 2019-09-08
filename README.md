@@ -38,16 +38,53 @@ Then check if you install them correctly running the following commands :
   docker-compose -v # للتاكد من نسخة دوكر كمبوس
   ```
 
-## Clone the project | تحميل المشروع ⛷
+## Install the project | تحميل المشروع ⛷
+> بكون ممنون اذا احد الاخوه يقوم يترجمة هذا الجزء لان ماعندي وقت فراغ
 
-Download the project by the following command :
+If you already have an exsiting Laravel Project, skip step 1
+1. Install a fresh copy of laravel using
+    ```sh
+    # using Laravel installer
+    laravel new my-laravel-app
 
-> حمل المشروع
+    # OR using Composer
+    composer create-project --prefer-dist laravel/laravel my-laravel-app
 
-```sh
-  # Go to the project directory | حمل المشروع 
-  git clone git@github.com:code2gether/laravel-docker.git
-```
+    # OR using gitHub repository
+    git clone https://github.com/laravel/laravel.git my-laravel-app
+    ```
+
+2. change into an existing project folder
+    ```sh
+    cd my-laravel-app
+    ```
+
+3. Now, let's check if git is already initialized in our laravel projet
+
+    ```sh
+    git status
+    ```
+    If you get this error message:
+    > fatal: Not a git repository (or any of the parent directories): .git
+
+    that means your laravel projet you are currently in is not being tracked by git. In that case, initialize git inside your project folder by typing 
+
+    ```sh
+    git init
+    ```
+
+4. Now, let add our `Laravel-Docker` project as a `submodule` to our laravel project and tracking the `master` branch using:
+    > حمل المشروع
+
+    ```sh
+    # Adds a new submodule into our project and define that the master branch should be tracked
+    git submodule add -b master git@github.com:code2gether/laravel-docker.git docker
+    # Initialize submodule configuration
+    git submodule init
+
+    # If you already done steps above and want to fetch new update from Laravel Docker project use:
+    git submodule update --remote
+    ```
 
 ## Run the application | تشغيل المشروع 🚀
 
@@ -59,7 +96,7 @@ To start the application run the following commands :
     > ادخل لملف المشروع
 
     ```sh
-    cd laravel-docker
+    cd docker
     ```
 
 2.  Spin up all docker containers
@@ -81,26 +118,14 @@ To start the application run the following commands :
     # يقوم بعرض الوقت والتاريخ بشكل مفهوم -t يقوم بتتبع النتائج بالوقت الحقيقي و  -f بينما
     ```
 
-4.  Install fresh copy of laravel
-
-    > تنزيل نسخة من مشروع لارافل بستخدام احدى الامرين
-
-    ```sh
-      # either by this command
-      ./commands composer create-project laravel/laravel project --no-progress --profile --prefer-dist
-
-      # or using Laravel installer
-      laravel new project
-    ```
-
-5.  If there is no `.env` file insde `project` directory, then make a new copy using:
+4.  If there is no `.env` file insde `project` directory, then make a new copy using:
     > تحتاج لعمل نسخة للملف env في حال اذا كال المشروع لايحتوي على ملف
 
     ```sh
       cp .env.example .env
     ```
 
-6.  Copy `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` from docker's `.env` file . 
+5.  Copy `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` from docker's `.env` file . 
     > للدوكر env انسخ اعدادات قاعدة البيانات من ملف 
     
     ```sh
@@ -114,23 +139,23 @@ To start the application run the following commands :
 
     ```sh
     # You can udpate configuration above as well but dont forget to run:
-    # وايضا تستطيع تحديث الاعدادات في اي وقت ولكن لاتنسى تنفيذ امر
-
+    # او تغير الباسورد لقاعدة البيانات ... الخ ولكن لاتنسى تنفيذ امر mysql وايضا تستطيع تحديث الاعدادات في اي وقت مثلا تغير نسخة 
+    
     docker-compose up --build -d
     ```
 > 
-7.  If you need to generate new laravel key, this can be done inside the container using:
+6.  If you need to generate new laravel key, this can be done inside the container using:
 
     > في حالة اذ تحتاج لتوليد مفتاح جديد لمشروعك نفذ الامر التالي
 
     ```sh
-      docker-compose exec app php artisan key:generate
-      #or
-      ./commands artisan key:generate
-      # ./commands: ملف يحتوي على اوامر مختصره لكل حاوية
+    docker-compose exec app php artisan key:generate
+    #or
+    ./commands artisan key:generate
+    # ./commands: ملف يحتوي على اوامر مختصره لكل حاوية
     ```
 
-8.  The application has been baked, its dinner time 🍔. Now you can open the following in your browser:
+7.  The application has been baked, its dinner time 🍔. Now you can open the following in your browser:
 
     > تم تجهيز البيئة المطلوبة ، يمكنك زيارة الروابط التالية
 
