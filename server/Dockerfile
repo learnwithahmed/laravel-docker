@@ -26,13 +26,16 @@ RUN echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu bionic main" > /etc/apt
   php7.3-xml php7.3-zip php7.3-bcmath php7.3-soap \
   php7.3-intl php7.3-readline php7.3-xdebug \
   php7.3-msgpack php7.3-igbinary php7.3-ldap \
-  && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
-  && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
   && mkdir /run/php \
   && apt-get -y autoremove \
   && apt-get -y autoclean \
   && rm -rf /var/lib/apt/lists/* /var/lib/cache/* /var/lib/log/* /tmp/* /var/tmp/* \
   && echo "daemon off;" >> /etc/nginx/nginx.conf
+
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | \
+    php -- --install-dir=/usr/local/bin --filename=composer \
+    mv composer.par /usr/local/bin/composer
 
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
   && ln -sf /dev/stderr /var/log/nginx/error.log
